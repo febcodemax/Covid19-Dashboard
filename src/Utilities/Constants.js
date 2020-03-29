@@ -1,0 +1,9 @@
+export const CovidDescriptionPart1 = "Coronavirus disease (COVID-19) is an infectious disease caused by a new virus.";
+export const CovidDescriptionPart2 = "The disease causes respiratory illness (like the flu) with symptoms such as a cough, fever, and in more severe cases, difficulty breathing. You can protect yourself by washing your hands frequently, avoiding touching your face, and avoiding close contact (1 meter or 3 feet) with people who are unwell.";
+export const CovidSpreadTitle = "HOW IT SPREADS";
+export const CovidSpreadDescription = "Coronavirus disease spreads primarily through contact with an infected person when they cough or sneeze. It also spreads when a person touches a surface or object that has the virus on it, then touches their eyes, nose, or mouth.";
+export const CovidApiURL = "https://covid19.mathdro.id/api";
+export const CovidApiCountryURL = "https://covid19.mathdro.id/api/countries";
+export const StatusConfirmed = "Confirmed";
+export const StatusRecovered = "Recovered";
+export const StatusDeath = "Deaths";

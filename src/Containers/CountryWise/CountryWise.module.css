@@ -1,0 +1,19 @@
+.Country{
+    width: 100%;
+    float:left;
+    color:Black;
+    align-items: center;
+}
+
+.SelectBox{
+    background: white !important;
+    width: 370px!important;
+    height: 35px;
+    border-radius: 3px!important;
+    margin: 7px!important;
+    margin-top:15px!important;
+}
+
+.SelectedCountry{
+    margin: 7px!important;
+}

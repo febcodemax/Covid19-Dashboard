@@ -1,0 +1,9 @@
+.Root{
+    width:100%;
+}
+
+.Card{
+    width: 30%;
+    margin: 4px;
+    float:left;
+}
