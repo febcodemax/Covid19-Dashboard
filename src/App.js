@@ -10,7 +10,7 @@ function App() {
       <h1>Covid-19 Tracker</h1>
       <CovidDescription />
       <Covidstatus/>
-    </div>
+    </div> 
   );
 }
 
