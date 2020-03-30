@@ -4,22 +4,34 @@ import * as Constants from '../../Utilities/Constants';
 import styles from './Covidstatus.module.css';
 
 import CardComponent from '../../Components/CardComponent/CardComponent';
-import CountryWiseComponent from '../CountryWise/CountryWise';
+
+// Include the react-fusioncharts component
+import ReactFC from "react-fusioncharts";
+
+// Include the fusioncharts library
+import FusionCharts from "fusioncharts";
+
+// Include the chart type
+import Pie2d from "fusioncharts/fusioncharts.charts";
+
+// Include the theme as fusion
+import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
+
 
 // create a component
 class Covidstatus extends Component {
     state = {
         globalStatus: [{
-            Title: Constants.StatusConfirmed,
-            Status: 0
+            label: Constants.StatusConfirmed,
+            value: 0
         },
         {
-            Title: Constants.StatusRecovered,
-            Status: 0
+            label: Constants.StatusRecovered,
+            value: 0
         },
         {
-            Title: Constants.StatusDeath,
-            Status: 0
+            label: Constants.StatusDeath,
+            value: 0
         }],
         globalStatusLoaded: false
     }
@@ -30,21 +42,21 @@ class Covidstatus extends Component {
             redirect: 'follow'
         };
 
-        fetch("https://covid19.mathdro.id/api", requestOptions)
+        fetch(Constants.CovidApiURL, requestOptions)
             .then(response => response.json())
             .then(result => {
                 this.setState({
                     globalStatus: [{
-                        Title: Constants.StatusConfirmed,
-                        Status: result.confirmed.value
+                        label: Constants.StatusConfirmed,
+                        value: result.confirmed.value
                     },
                     {
-                        Title: Constants.StatusRecovered,
-                        Status: result.recovered.value
+                        label: Constants.StatusRecovered,
+                        value: result.recovered.value
                     },
                     {
-                        Title: Constants.StatusDeath,
-                        Status: result.deaths.value
+                        label: Constants.StatusDeath,
+                        value: result.deaths.value
                     }],
                     globalStatusLoaded: true
                 })
@@ -54,15 +66,44 @@ class Covidstatus extends Component {
     }
 
     render() {
+        ReactFC.fcRoot(FusionCharts, Pie2d, FusionTheme);
+        let chartConfigs = {
+            type: "Pie2d", // The chart type
+            width: "100%", // Width of the chart
+            height: "300", // Height of the chart
+            dataFormat: "json", // Data type
+            dataSource: {
+                // Chart Configuration
+                chart: {
+                    //Set the chart caption
+                    caption: "Global Covid-19 Status",
+                    //Set the chart subcaption
+                    subCaption: "",
+                    //Set the x-axis name
+                    xAxisName: "Status",
+                    //Set the y-axis name
+                    yAxisName: "Count",
+                    numberSuffix: "",
+                    //Set the theme for your chart
+                    theme: "candy"
+                },
+                // Chart Data
+                data:  this.state.globalStatus
+            }
+        };
+
         return (
             <div className={styles.CovidBody}>
-                 <h3 className={styles.SelectedCountry}>Global Case</h3>
-            {
-                (this.state.globalStatusLoaded) ? 
-                <CardComponent 
-                    data={this.state.globalStatus} /> : null
-            }
-            <CountryWiseComponent defaultCountry="India"/>
+            
+                <h3 className={styles.SelectedCountry}>Global Case</h3>
+                {
+                    (this.state.globalStatusLoaded) ?
+                        <div><CardComponent
+                            data={this.state.globalStatus} /><ReactFC  className={styles.CountryChart} {...chartConfigs} /></div> : null
+                    /*(this.state.globalStatusLoaded) ?
+                        <ReactFC {...chartConfigs} /> : null*/
+                }
+
             </div>
         );
     }

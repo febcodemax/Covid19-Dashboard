@@ -5,6 +5,12 @@
     align-items: center;
 }
 
+.CountryChart{
+    width: 28.5%;
+    float: left;
+    margin: 4px;
+}
+
 .SelectBox{
     background: white !important;
     width: 370px!important;

@@ -6,3 +6,9 @@
 .SelectedCountry{
     margin: 7px!important;
 }
+
+.CountryChart{
+    width: 87%;
+    float: left;
+    margin: 4px;
+}

@@ -11,10 +11,10 @@ const cardComponent = (props) => {
             <Card className={styles.Card} variant="outlined" key={i}>
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h1">
-                        {result.Title}
+                        {result.label}
                     </Typography>
                     <Typography variant="h5" component="h2">
-                        {result.Status}
+                        {result.value}
                     </Typography>
                 </CardContent>
             </Card>

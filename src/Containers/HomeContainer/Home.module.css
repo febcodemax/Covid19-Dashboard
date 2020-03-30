@@ -1,0 +1,29 @@
+.Home ul{
+    list-style: none;
+    margin:0;
+    padding:0;
+    width: 100%;
+    text-align: center;
+}
+
+.Home li{
+    list-style: none;
+    text-align: center;
+    background-color:lightgreen;
+    width: 150px;
+    line-height: 60px;
+    display: inline-block;
+    margin:20px;
+}
+
+.Home a{
+    text-decoration: none;
+    color:black;
+}
+
+.Home li a:active,
+.Home li a.active,
+.Home li a.my-active{
+    text-decoration: none!important;
+    color:#fa923f!important;
+}
