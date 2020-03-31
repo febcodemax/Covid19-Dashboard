@@ -150,7 +150,7 @@ class CountryWise extends Component {
             if (modifiedArr.length > 0) {
                 var sum = 0;
                 if (month === currentMonth) {
-                    sum = modifiedArr[modifiedArr.length - 2].value;
+                    sum = (modifiedArr[modifiedArr.length - 1].value === 0) ? modifiedArr[modifiedArr.length - 2].value : modifiedArr[modifiedArr.length - 1].value;
                 } else {
                     sum = modifiedArr[modifiedArr.length - 1].value;
                 }
