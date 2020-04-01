@@ -144,16 +144,11 @@ class CountryWise extends Component {
 
     GetValueSum(arr) {
         var newArray = [];
-        var currentMonth = monthNames[new Date().getMonth()];
+        //var currentMonth = monthNames[new Date().getMonth()];
         monthNames.forEach(month => {
             var modifiedArr = arr.filter(res => res.label === month);
             if (modifiedArr.length > 0) {
-                var sum = 0;
-                if (month === currentMonth) {
-                    sum = (modifiedArr[modifiedArr.length - 1].value === 0) ? modifiedArr[modifiedArr.length - 2].value : modifiedArr[modifiedArr.length - 1].value;
-                } else {
-                    sum = modifiedArr[modifiedArr.length - 1].value;
-                }
+                var sum = (modifiedArr[modifiedArr.length - 1].value === 0) ? modifiedArr[modifiedArr.length - 2].value : modifiedArr[modifiedArr.length - 1].value;
                 /*var sum = modifiedArr.reduce(function (total, currentValue) {
                     return total + currentValue.value;
                 }, 0);*/
